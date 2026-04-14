@@ -1,0 +1,26 @@
+{
+  "random": {
+    "cumulative_return": 0.06715027077343752,
+    "sharpe_ratio": 0.42588389635972107,
+    "max_drawdown": -0.164546553853911,
+    "win_rate": 0.5234126984126984,
+    "final_value": 1067150.2707734376,
+    "n_steps": 252.0
+  },
+  "buy_and_hold": {
+    "cumulative_return": 0.3336883,
+    "sharpe_ratio": 2.2520130620723497,
+    "max_drawdown": -0.09379501941588568,
+    "win_rate": 0.6079365079365079,
+    "final_value": 1333688.3,
+    "n_steps": 252.0
+  },
+  "equal_weight_rebalance": {
+    "cumulative_return": 0.31723835000000006,
+    "sharpe_ratio": 2.1717377940403404,
+    "max_drawdown": -0.09349194510417223,
+    "win_rate": 0.6075396825396826,
+    "final_value": 1317238.35,
+    "n_steps": 252.0
+  }
+}

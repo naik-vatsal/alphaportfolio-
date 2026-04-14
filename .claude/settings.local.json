@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python test_session1.py)",
+      "Bash(python test_session4.py)",
+      "Bash(python -m experiments.run_all --exp 1 --spec-ep 300 --orch-ep 500)",
+      "Bash(python -m experiments.run_all --exp 2 --spec-ep 300 --orch-ep 500)",
+      "Bash(python:*)"
+    ]
+  }
+}

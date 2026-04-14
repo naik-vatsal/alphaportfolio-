@@ -1,0 +1,34 @@
+{
+  "alphaportfolio_dqn": {
+    "cumulative_return": 0.5940820375,
+    "sharpe_ratio": 2.6740266964289203,
+    "max_drawdown": -0.10840543229547497,
+    "win_rate": 0.5666666666666667,
+    "final_value": 1594082.0375,
+    "n_steps": 252.0
+  },
+  "random": {
+    "cumulative_return": 0.08115666047890624,
+    "sharpe_ratio": 0.47921592616536673,
+    "max_drawdown": -0.1489168003693621,
+    "win_rate": 0.5305555555555557,
+    "final_value": 1081156.6604789062,
+    "n_steps": 252.0
+  },
+  "buy_and_hold": {
+    "cumulative_return": 0.33281105,
+    "sharpe_ratio": 2.2693235600842776,
+    "max_drawdown": -0.09174903718785257,
+    "win_rate": 0.6063492063492063,
+    "final_value": 1332811.05,
+    "n_steps": 252.0
+  },
+  "equal_weight_rebalance": {
+    "cumulative_return": 0.32737015,
+    "sharpe_ratio": 2.2291849211089163,
+    "max_drawdown": -0.09411064555306407,
+    "win_rate": 0.6123015873015873,
+    "final_value": 1327370.15,
+    "n_steps": 252.0
+  }
+}
