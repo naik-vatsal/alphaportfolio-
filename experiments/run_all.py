@@ -92,6 +92,7 @@ def _print_header(title: str) -> None:
 def run_experiment_1(
     n_specialist_episodes: int = _N_SPEC,
     n_orchestrator_episodes: int = 0,     # orchestrator phase skipped
+    n_warmup_episodes: int = 0,
 ) -> Dict:
     """
     Baseline: one MacroAgent trained alone, no bandit or coordinator.
@@ -129,6 +130,7 @@ def run_experiment_1(
         cfg=cfg,
         n_specialist_episodes=n_specialist_episodes,
         n_orchestrator_episodes=n_orchestrator_episodes,
+        n_warmup_episodes=n_warmup_episodes,
         experiment_name="exp1_baseline_dqn",
     )
 
@@ -155,6 +157,7 @@ def run_experiment_1(
 def run_experiment_2(
     n_specialist_episodes: int = _N_SPEC,
     n_orchestrator_episodes: int = _N_ORCH,
+    n_warmup_episodes: int = 0,
 ) -> Dict:
     """
     DQN specialists + UCB bandit routing.
@@ -172,6 +175,7 @@ def run_experiment_2(
         cfg=cfg,
         n_specialist_episodes=n_specialist_episodes,
         n_orchestrator_episodes=n_orchestrator_episodes,
+        n_warmup_episodes=n_warmup_episodes,
         experiment_name="exp2_dqn_ucb",
     )
 
@@ -197,6 +201,7 @@ def run_experiment_2(
 def run_experiment_3(
     n_specialist_episodes: int = _N_SPEC,
     n_orchestrator_episodes: int = _N_ORCH,
+    n_warmup_episodes: int = 0,
 ) -> Dict:
     """
     Full multi-agent setup: UCB bandit + coordinator reward sharing (alpha=0.7).
@@ -213,6 +218,7 @@ def run_experiment_3(
         cfg=cfg,
         n_specialist_episodes=n_specialist_episodes,
         n_orchestrator_episodes=n_orchestrator_episodes,
+        n_warmup_episodes=n_warmup_episodes,
         experiment_name="exp3_dqn_ucb_coord",
     )
 
@@ -238,6 +244,7 @@ def run_experiment_3(
 def run_experiment_4(
     n_specialist_episodes: int = _N_SPEC,
     n_orchestrator_episodes: int = _N_ORCH,
+    n_warmup_episodes: int = 0,
 ) -> Dict:
     """
     Complete AlphaPortfolio: UCB + coordinator + LLM regime classification.
@@ -265,6 +272,7 @@ def run_experiment_4(
         cfg=cfg,
         n_specialist_episodes=n_specialist_episodes,
         n_orchestrator_episodes=n_orchestrator_episodes,
+        n_warmup_episodes=n_warmup_episodes,
         experiment_name="exp4_full_system",
     )
 
@@ -295,6 +303,7 @@ def run_experiment_5(
     alphas: tuple = (0.0, 0.7, 1.0),
     n_specialist_episodes: int = _N_SPEC,
     n_orchestrator_episodes: int = _N_ORCH,
+    n_warmup_episodes: int = 0,
 ) -> Dict:
     """
     Ablation study: how does COORD_ALPHA affect performance?
@@ -326,6 +335,7 @@ def run_experiment_5(
             cfg=cfg,
             n_specialist_episodes=n_specialist_episodes,
             n_orchestrator_episodes=n_orchestrator_episodes,
+            n_warmup_episodes=n_warmup_episodes,
             experiment_name=exp_name,
         )
 
@@ -376,6 +386,7 @@ def run_experiment_5(
 def run_all(
     n_specialist_episodes: int = _N_SPEC,
     n_orchestrator_episodes: int = _N_ORCH,
+    n_warmup_episodes: int = 0,
 ) -> None:
     """Run all five experiments sequentially."""
     print("\nAlphaPortfolio — Full Experiment Suite")
@@ -386,6 +397,7 @@ def run_all(
     kw = dict(
         n_specialist_episodes=n_specialist_episodes,
         n_orchestrator_episodes=n_orchestrator_episodes,
+        n_warmup_episodes=n_warmup_episodes,
     )
     run_experiment_1(**kw)
     run_experiment_2(**kw)
@@ -394,6 +406,7 @@ def run_all(
     run_experiment_5(
         n_specialist_episodes=n_specialist_episodes,
         n_orchestrator_episodes=n_orchestrator_episodes,
+        n_warmup_episodes=n_warmup_episodes,
     )
     print(f"\nAll experiments complete. Results in {RESULTS_DIR.resolve()}")
 
@@ -443,13 +456,15 @@ if __name__ == "__main__":
         choices=["1", "2", "3", "4", "5", "all"],
         help="Which experiment to run (default: all)",
     )
-    parser.add_argument("--spec-ep",  type=int, default=_N_SPEC,  help="Specialist episodes per agent")
-    parser.add_argument("--orch-ep",  type=int, default=_N_ORCH,  help="Orchestrator episodes")
+    parser.add_argument("--spec-ep",   type=int, default=_N_SPEC,  help="Specialist episodes per agent")
+    parser.add_argument("--orch-ep",   type=int, default=_N_ORCH,  help="Orchestrator episodes")
+    parser.add_argument("--warmup-ep", type=int, default=200,       help="Warm-up episodes per agent (Phase 1.5)")
     args = parser.parse_args()
 
     kw = dict(
         n_specialist_episodes=args.spec_ep,
         n_orchestrator_episodes=args.orch_ep,
+        n_warmup_episodes=args.warmup_ep,
     )
 
     dispatch = {

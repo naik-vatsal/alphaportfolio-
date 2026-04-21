@@ -224,6 +224,31 @@ def train_orchestrator(
 
 
 # ──────────────────────────────────────────────────────────────────────
+# Phase 1.5: warm-up in orchestrated environment
+# ──────────────────────────────────────────────────────────────────────
+
+def train_warmup(portfolio, env, logger, n_episodes: int) -> None:
+    if n_episodes == 0:
+        return
+    print("\n" + "="*60)
+    print(f"Phase 1.5 | Warm-up ({n_episodes} eps per agent in orchestrated env)")
+    print("="*60 + "\n")
+    for agent in portfolio.agents:
+        pbar = tqdm(range(n_episodes), desc=f"  warmup {agent.name}", unit="ep")
+        for ep in pbar:
+            obs, _ = env.reset()
+            done = False
+            while not done:
+                action = agent.select_action(obs)
+                next_obs, reward, term, trunc, _ = env.step(action)
+                done = term or trunc
+                agent.store_transition(obs, action, reward, next_obs, done)
+                agent.update()
+                obs = next_obs
+        print(f"  {agent.name} warmup complete")
+
+
+# ──────────────────────────────────────────────────────────────────────
 # Main entry point
 # ──────────────────────────────────────────────────────────────────────
 
@@ -231,6 +256,7 @@ def run_training(
     cfg=CFG,
     n_specialist_episodes: int = 200,
     n_orchestrator_episodes: int = 500,
+    n_warmup_episodes: int = 0,
     checkpoint_freq: int = 50,
     experiment_name: Optional[str] = None,
 ) -> Dict:
@@ -286,6 +312,14 @@ def run_training(
         logger=logger,
         n_episodes=n_specialist_episodes,
         checkpoint_freq=checkpoint_freq,
+    )
+
+    # --- Phase 1.5 ---
+    train_warmup(
+        portfolio=portfolio,
+        env=train_env,
+        logger=logger,
+        n_episodes=n_warmup_episodes,
     )
 
     # --- Phase 2 ---
