@@ -1,32 +1,32 @@
 {
   "alphaportfolio_ucb": {
-    "cumulative_return": 0.3449766125,
-    "sharpe_ratio": 1.7252556140308333,
-    "max_drawdown": -0.12478684033883262,
-    "win_rate": 0.5611111111111111,
-    "final_value": 1344976.6125,
+    "cumulative_return": 0.1288867545125,
+    "sharpe_ratio": 0.8005625062067392,
+    "max_drawdown": -0.09804253507675004,
+    "win_rate": 0.5337301587301587,
+    "final_value": 1128886.7545125,
     "n_steps": 252.0
   },
   "random": {
-    "cumulative_return": 0.11406675069999998,
-    "sharpe_ratio": 0.712097766777674,
-    "max_drawdown": -0.127330994158286,
-    "win_rate": 0.5265873015873017,
-    "final_value": 1114066.7507,
+    "cumulative_return": 0.12600544666875002,
+    "sharpe_ratio": 0.7238354759121587,
+    "max_drawdown": -0.14205730999311422,
+    "win_rate": 0.5337301587301588,
+    "final_value": 1126005.4466687501,
     "n_steps": 252.0
   },
   "buy_and_hold": {
-    "cumulative_return": 0.3328110125,
-    "sharpe_ratio": 2.269323696789532,
-    "max_drawdown": -0.0917489668473219,
+    "cumulative_return": 0.33281103749999996,
+    "sharpe_ratio": 2.269324006723413,
+    "max_drawdown": -0.09174898131303179,
     "win_rate": 0.6063492063492063,
-    "final_value": 1332811.0125,
+    "final_value": 1332811.0375,
     "n_steps": 252.0
   },
   "equal_weight_rebalance": {
     "cumulative_return": 0.32737016249999995,
-    "sharpe_ratio": 2.2291855910510305,
-    "max_drawdown": -0.09411061151092066,
+    "sharpe_ratio": 2.229185293673694,
+    "max_drawdown": -0.0941105986822581,
     "win_rate": 0.6123015873015873,
     "final_value": 1327370.1625,
     "n_steps": 252.0
