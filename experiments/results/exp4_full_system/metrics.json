@@ -1,0 +1,18 @@
+{
+  "alphaportfolio_full": {
+    "cumulative_return": 0.6318,
+    "sharpe_ratio": 2.310,
+    "max_drawdown": -0.1021,
+    "win_rate": 0.591,
+    "final_value": 1631800.0,
+    "n_steps": 252.0
+  },
+  "buy_and_hold": {
+    "cumulative_return": 0.3328,
+    "sharpe_ratio": 2.269,
+    "max_drawdown": -0.0917,
+    "win_rate": 0.608,
+    "final_value": 1332800.0,
+    "n_steps": 252.0
+  }
+}

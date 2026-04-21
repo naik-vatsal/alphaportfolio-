@@ -1,0 +1,10 @@
+{
+  "alphaportfolio_alpha0": {
+    "cumulative_return": 0.3821,
+    "sharpe_ratio": 1.740,
+    "max_drawdown": -0.1134,
+    "win_rate": 0.556,
+    "final_value": 1382100.0,
+    "n_steps": 252.0
+  }
+}
